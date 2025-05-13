@@ -1,0 +1,21 @@
+# gem 'pg' 
+# 
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: 1234
+  pool: 5
+  
+development:
+  <<: *default
+  database: backend_challenge_development
+  
+# production:
+#   <<: *default
+#   database: backend_challenge_development
+
+test:
+  <<: *default
+  database: backend_challenge_development_test
