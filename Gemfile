@@ -14,6 +14,11 @@ gem "puma", ">= 5.0"
 #Gema para serializadores
 gem 'active_model_serializers'
 
+##Parte 3 de para graphQL
+gem 'graphql'
+
+
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -48,5 +53,6 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem 'graphiql-rails', '~> 1.8'
 end
 
