@@ -1,24 +1,18 @@
-# README
+## Integración Continua (CI) con Jenkins
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este proyecto incluye un archivo `Jenkinsfile` que permite ejecutar un pipeline de CI con los siguientes pasos:
 
-Things you may want to cover:
+1. Instalación de dependencias (`bundle install`)
+2. Ejecución de pruebas automatizadas (`rspec`)
+3. Construcción de la imagen Docker (`docker build`)
+4. (Opcional) Publicación de la imagen en Docker Hub
 
-* Ruby version
+### Variables necesarias
 
-* System dependencies
+- `DOCKER_REGISTRY`: Registro Docker (ej: `docker.io/usuario`)
+- Credenciales Docker: deben estar configuradas en Jenkins como `dockerhub-creds`.
 
-* Configuration
+### Plugins necesarios
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Docker Pipeline
+- GitHub Plugin
