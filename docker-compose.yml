@@ -30,6 +30,7 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
+      - bundle_cache:/usr/local/bundle
     depends_on:
       - postgres
     networks:
@@ -39,6 +40,7 @@ services:
 
 volumes:
   pg_data:
+  bundle_cache: 
 
 networks:
   backend_net:

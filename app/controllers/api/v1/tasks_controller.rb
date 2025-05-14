@@ -1,6 +1,7 @@
 module Api
   module V1
     class TasksController < ApplicationController
+      before_action :authorize_request, unless: -> { Rails.env.test? }
       before_action :set_task, only: [:show, :update, :destroy]
       def index
         tasks = Task.paginate(page: params[:page], per_page: 10)

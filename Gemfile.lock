@@ -119,6 +119,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jsonapi-renderer (0.2.2)
+    jwt (2.10.1)
+      base64
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -246,6 +248,7 @@ DEPENDENCIES
   error_highlight (>= 0.4.0)
   graphiql-rails (~> 1.8)
   graphql
+  jwt
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.1)

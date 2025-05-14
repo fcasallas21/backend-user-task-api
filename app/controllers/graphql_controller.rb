@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class GraphqlController < ApplicationController
+  before_action :authorize_request, unless: -> { ENV['SKIP_AUTH'] == 'true' }
   # If accessing from outside this domain, nullify the session
   # This allows for outside API access while preventing CSRF attacks,
   # but you'll have to authenticate your user separately
@@ -19,6 +20,21 @@ class GraphqlController < ApplicationController
   rescue StandardError => e
     raise e unless Rails.env.development?
     handle_error_in_development(e)
+  end
+
+  def authorize_request
+    return if Rails.env.test?
+    header = request.headers['Authorization']
+    header = header.split.last if header
+    begin
+      @decoded = JsonWebToken.decode(header)
+      @current_user = AppUser.find(@decoded[:app_user_id])
+      #render json: { message: 'Token válido' }, status: :ok
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { errors: e.message }, status: :unauthorized
+    rescue StandardError
+      render json: { errors: 'ERROR' }, status: :unauthorized
+    end
   end
 
   private

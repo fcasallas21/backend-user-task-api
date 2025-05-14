@@ -20,6 +20,8 @@ gem 'graphql'
 ##Paginacion
 gem 'will_paginate', '~> 3.3'
 
+gem 'jwt'
+
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]

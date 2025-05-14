@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Tasks", type: :request do
+
+  before do
+    allow_any_instance_of(ApplicationController).to receive(:authorize_request).and_return(true)
+  end
+  
   let!(:user) { User.create!(email: "angelao@example.com", full_name: "Angela Oliveros", role: "admin") }
   let!(:task) { Task.create!(title: "task_testing", status: "pending", user: user) }
 
