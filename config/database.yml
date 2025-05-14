@@ -1,21 +1,39 @@
 # gem 'pg' 
 # 
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   host: localhost
+#   username: postgres
+#   password: 1234
+#   pool: 5
+  
+# development:
+#   <<: *default
+#   database: backend_challenge_development
+  
+# # production:
+# #   <<: *default
+# #   database: backend_challenge_development
+
+# test:
+#   <<: *default
+#   database: backend_challenge_development_test
+
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
-  username: postgres
-  password: 1234
+  host: <%= ENV.fetch("POSTGRES_HOST", "localhost") %>
+  username: <%= ENV.fetch("POSTGRES_USER", "postgres") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "1234") %>
   pool: 5
-  
+
 development:
   <<: *default
-  database: backend_challenge_development
-  
-# production:
-#   <<: *default
-#   database: backend_challenge_development
+  database: <%= ENV.fetch("POSTGRES_DB", "backend_challenge_development") %>
 
 test:
   <<: *default
   database: backend_challenge_development_test
+
+
