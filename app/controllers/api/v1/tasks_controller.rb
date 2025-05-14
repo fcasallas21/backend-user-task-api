@@ -3,7 +3,7 @@ module Api
     class TasksController < ApplicationController
       before_action :set_task, only: [:show, :update, :destroy]
       def index
-        tasks = Task.all
+        tasks = Task.paginate(page: params[:page], per_page: 10)
         render json: tasks
       end
 

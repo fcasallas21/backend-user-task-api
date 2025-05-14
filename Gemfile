@@ -17,6 +17,9 @@ gem 'active_model_serializers'
 ##Parte 3 de para graphQL
 gem 'graphql'
 
+##Paginacion
+gem 'will_paginate', '~> 3.3'
+
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
